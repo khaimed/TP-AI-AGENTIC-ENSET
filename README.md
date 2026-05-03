@@ -1,77 +1,53 @@
-# TP LangChain - Chef Personnel
+# TP LLM et LangChain
 
-## Objectif
+Depot unique regroupant deux TPs du meme module.
 
-Ce projet realise le TP demande:
-- agent avec `system message`
-- agent avec `memoire`
-- agent avec `tool de recherche web`
-- proposition de plats selon les ingredients disponibles
+## Structure
 
-## Fichiers
+- [tp-langchain-agents](./tp-langchain-agents) : TP `Agents avec LangChain`
+- [tp-prompt-engineering](./tp-prompt-engineering) : TP `Ingenierie des prompts`
 
-- `chef_personnel_agent.py` : script principal
-- `requirements.txt` : dependances Python
-- `.env.example` : variables d'environnement a copier dans `.env`
+## 1. TP Agents avec LangChain
 
-## Installation
+Ce dossier contient un agent `chef personnel` construit avec :
+- un `system message`
+- une `memoire`
+- un `tool` de recherche web
+- un modele local via `Ollama`
+
+Fichier principal :
+- [chef_personnel_agent.py](./tp-langchain-agents/chef_personnel_agent.py)
+
+Execution rapide :
 
 ```bash
+cd tp-langchain-agents
 pip install -r requirements.txt
+python chef_personnel_agent.py
 ```
 
-## Configuration
+## 2. TP Ingenierie des prompts
 
-1. Copier `.env.example` vers `.env`
-2. Renseigner:
+Ce dossier contient les exercices du document sur :
+- la tokenisation avec `tiktoken`
+- les prompts avec `Ollama`
+- les prompts avec `Groq`
+- les prompts avec `OpenAI`
+- une sortie JSON
+- la generation et la description d'image
 
-```env
-OLLAMA_MODEL=llama3.2:3b
-TAVILY_API_KEY=...
-APP_MODE=interactive
-OLLAMA_TEMPERATURE=0
-```
+Projet principal :
+- [README du TP Prompt](./tp-prompt-engineering/README.md)
 
-## Execution
-
-Mode interactif par defaut:
+Execution rapide :
 
 ```bash
-python3 chef_personnel_agent.py
+cd tp-prompt-engineering
+uv venv
+uv sync
 ```
 
-Mode interactif:
+## Remarques
 
-```bash
-APP_MODE=interactive python3 chef_personnel_agent.py
-```
-
-Mode demo:
-
-```bash
-APP_MODE=demo python3 chef_personnel_agent.py
-```
-
-## Ce que montre le TP
-
-- Le `system message` donne le role de chef personnel.
-- La `memoire` conserve les preferences de l'utilisateur avec `InMemorySaver`.
-- Le tool `web_search` permet de completer une information culinaire si necessaire.
-- L'agent propose un ou plusieurs plats adaptes aux ingredients.
-
-## Exemple d'utilisation
-
-Utilisateur:
-`J'ai des pommes de terre, des oeufs et du fromage. Je n'aime pas le piment.`
-
-Agent:
-- propose un plat adapte
-- explique pourquoi il convient
-- liste les ingredients utilises
-- donne des etapes simples
-
-## Exercices
-![Exercise 1](images/WindowsTerminal_1.png)
-![Exercise 2](images/WindowsTerminal_2.png)
-![Exercise 3](images/WindowsTerminal_3.png)
-![Exercise 4](images/WindowsTerminal_4.png)
+- Certains scripts demandent des cles API (`OpenAI`, `Groq`) ou un serveur `Ollama` actif.
+- Les fichiers `.env` ne doivent pas etre pushes sur GitHub.
